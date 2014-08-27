@@ -24,7 +24,8 @@ ALLOWED_HOSTS = []
 
 INSTALLED_APPS = (
     'django.contrib.staticfiles',
-    'data'
+    'data',
+    'rest_framework'
 )
 
 MIDDLEWARE_CLASSES = (
