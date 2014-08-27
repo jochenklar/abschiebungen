@@ -41,9 +41,14 @@ ROOT_URLCONF = 'abschiebungen.urls'
 WSGI_APPLICATION = 'abschiebungen.wsgi.application'
 
 DATABASES = {
+    # 'default': {
+    #     'ENGINE': 'django.db.backends.sqlite3',
+    #     'NAME': os.path.join(BASE_DIR, 'db/abschiebungen.sqlite'),
+    # },
     'default': {
-        'ENGINE': 'django.db.backends.sqlite3',
-        'NAME': os.path.join(BASE_DIR, 'db/abschiebungen.sqlite'),
+        'ENGINE': 'django.db.backends.postgresql_psycopg2',
+        'NAME': 'abschiebungen',
+        'USER': 'abschiebungen'
     }
 }
 
