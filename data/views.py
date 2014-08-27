@@ -1,3 +1,7 @@
-from django.shortcuts import render
+from rest_framework import viewsets
+from data.models import *
+from data.serializers import *
 
-# Create your views here.
+class AbschiebungBundeslaender(viewsets.ModelViewSet):
+    queryset = AbschiebungBundeslaender.objects.all()
+    serializer_class = AbschiebungBundeslaenderSerializer
