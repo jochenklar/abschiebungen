@@ -2,4 +2,5 @@ from django.shortcuts import render
 from data.models import *
 
 def home(request):
-    return render(request,'index.html')
+    items = UeberstellungZielgebiet.objects.all()
+    return render(request,'index.html',{'items': items})
