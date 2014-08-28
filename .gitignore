@@ -3,3 +3,4 @@
 *.pyc
 *~
 abschiebungen/settings.py
+db.sqlite3
