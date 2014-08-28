@@ -2,3 +2,4 @@
 /static/
 *.pyc
 *~
+abschiebungen/settings.py
