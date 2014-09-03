@@ -115,7 +115,7 @@ class ZurueckweisungLuftwegGruendeSerializer(serializers.HyperlinkedModelSeriali
 
 class ZurueckweisungLuftwegNationalitaetSerializer(serializers.HyperlinkedModelSerializer):
     class Meta:
-        model = ZurueckweisungLuftwegGruende
+        model = ZurueckweisungLuftwegNationalitaet
 
 class ZurueckweisungLuftwegZielgebietSerializer(serializers.HyperlinkedModelSerializer):
     class Meta:

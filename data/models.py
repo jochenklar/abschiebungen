@@ -1,4 +1,11 @@
+#!/usr/bin/env python
+# -*- coding: utf-8 -*-
+
 from django.db import models
+
+#class Country(models.Model):
+#    short = models.CharField(max_length=256)
+#    long = models.CharField(max_lenght= 256)
 
 class AbschiebungBundeslaender(models.Model):
     bundesland = models.CharField(max_length=256, blank=True)
@@ -23,6 +30,7 @@ class AbschiebungLuftwegNationalitaet(models.Model):
 class AbschiebungLuftwegZielgebiet(models.Model):
     zielstaat_zielgebiet = models.CharField(max_length=256, blank=True)
     gesamtzahl_personen = models.IntegerField(blank=True, null=True)
+    # Hier Landverknüpfung
 
 class AbschiebungSeewegNationalitaet(models.Model):
     staatsangehoerigkeit = models.CharField(max_length=256, blank=True)
@@ -31,6 +39,7 @@ class AbschiebungSeewegNationalitaet(models.Model):
 class AbschiebungSeewegZielgebiet(models.Model):
     zielstaat_zielgebiet = models.CharField(max_length=256, blank=True)
     gesamtzahl_personen = models.IntegerField(blank=True, null=True)
+    # Hier Landverknüpfung
 
 class Airlinesbegleitung(models.Model):
     luftfahrtunternehmen = models.CharField(max_length=256, blank=True)
@@ -39,6 +48,7 @@ class Airlinesbegleitung(models.Model):
 class Frontexabschiebungen(models.Model):
     datum = models.CharField(max_length=256, blank=True)
     zielland = models.CharField(max_length=256, blank=True)
+    # Hier Landverknüpfung
     rueckzufuehrende = models.CharField(max_length=256, blank=True)
     bundesbeamte = models.CharField(max_length=256, blank=True)
     beteiligte_bundeslaender = models.CharField(max_length=256, blank=True)
@@ -61,6 +71,7 @@ class GescheitertMedizinischFlughafen(models.Model):
 
 class GescheitertMedizinischNationalitaet(models.Model):
     staatsangehoerigkeit = models.CharField(max_length=256, blank=True, null=True)
+    # Hier Landverknüpfung
     gesamtzahl_personen = models.IntegerField(blank=True, null=True)
 
 class GescheitertWiderstandFlughafen(models.Model):
@@ -69,6 +80,7 @@ class GescheitertWiderstandFlughafen(models.Model):
 
 class GescheitertWiderstandNationalitaet(models.Model):
     staatsangehoerigkeit = models.CharField(max_length=256, blank=True, null=True)
+    # Hier Länderverknüpfung
     gesamtzahl_personen = models.IntegerField(blank=True, null=True)
 
 class GruendeZurueckweisungen(models.Model):
@@ -82,11 +94,13 @@ class Tabellenbenennungen(models.Model):
 
 class UeberstellungHerkunftsstaat(models.Model):
     herkunftsstaaten = models.CharField(max_length=256, blank=True, null=True)
+    # hier Länderverknüpfung
     n = models.IntegerField(blank=True, null=True)
     davon_minderjaehrige_unter_18 = models.IntegerField(blank=True, null=True)
 
 class UeberstellungZielgebiet(models.Model):
     ueberstellungen_nach_mitgliedstaaten = models.CharField(max_length=256, blank=True)
+    # hier Länderverknüpfung
     n = models.IntegerField(blank=True, null=True)
     davon_minderjaehrige_unter_18 = models.IntegerField(blank=True, null=True)
 
@@ -96,6 +110,7 @@ class ZurueckschiebungBundeslaender(models.Model):
 
 class ZurueckschiebungLandwegNationalitaet(models.Model):
     staatsangehoerigkeit = models.CharField(max_length=256, blank=True, null=True)
+    # hier Länderverknüpfung
     zurueckschiebungen_personen = models.IntegerField(blank=True, null=True)
 
 class ZurueckschiebungLuftwegFlughafen(models.Model):
@@ -104,10 +119,12 @@ class ZurueckschiebungLuftwegFlughafen(models.Model):
 
 class ZurueckschiebungLuftwegNationalitaet(models.Model):
     staatsangehoerigkeit = models.CharField(max_length=256, blank=True, null=True)
+    # Länderverknüpfung
     gesamtzahl_personen = models.IntegerField(blank=True, null=True)
 
 class ZurueckschiebungLuftwegZielgebiet(models.Model):
     zielstaat_zielgebiet = models.CharField(max_length=256, blank=True, null=True)
+    # hier Länderverknüpfung
     gesamtzahl_personen = models.IntegerField(blank=True, null=True)
 
 class ZurueckweisungBundeslaender(models.Model):
@@ -120,6 +137,7 @@ class ZurueckweisungLuftwegFlughafen(models.Model):
 
 class ZurueckweisungLuftwegGruende(models.Model):
     nationalitaet = models.CharField(max_length=256, blank=True, null=True)
+    # hier Länderverknüpfung
     gesamt = models.IntegerField(blank=True, null=True)
     a = models.IntegerField(blank=True, null=True)
     b = models.IntegerField(blank=True, null=True)
@@ -133,14 +151,17 @@ class ZurueckweisungLuftwegGruende(models.Model):
 
 class ZurueckweisungLuftwegNationalitaet(models.Model):
     staatsangehoerigkeit = models.CharField(max_length=256, blank=True, null=True)
+    # hier Länderverknüpfung
     gesamtzahl_personen = models.IntegerField(blank=True, null=True)
 
 class ZurueckweisungLuftwegZielgebiet(models.Model):
     zielstaat_zielgebiet = models.CharField(max_length=256, blank=True, null=True)
+    # hier Länderverknüpfung
     gesamtzahl_personen = models.IntegerField(blank=True, null=True)
 
 class ZurueckweisungSeewegGruende(models.Model):
     nationalitaet = models.CharField(max_length=256, blank=True, null=True)
+    # hier Länderverknüpfung
     gesamt = models.IntegerField(blank=True, null=True)
     a = models.IntegerField(blank=True, null=True)
     b = models.IntegerField(blank=True, null=True)
@@ -154,6 +175,7 @@ class ZurueckweisungSeewegGruende(models.Model):
 
 class ZurueckweisungschiebungMinderjaehrigNationalitaet(models.Model):
     staatsangehoerigkeit = models.CharField(max_length=256, blank=True, null=True)
+    # hier Länderverknüpfung
     anzahl = models.IntegerField(blank=True, null=True)
     davonzurueckgewiesen = models.IntegerField(blank=True, null=True)
     davonzurueckgeschoben = models.IntegerField(blank=True, null=True)
@@ -161,6 +183,7 @@ class ZurueckweisungschiebungMinderjaehrigNationalitaet(models.Model):
 
 class ZurueckweisungschiebungMinderjaehrigSeeweg(models.Model):
     staatsangehoerigkeit = models.CharField(max_length=256, blank=True, null=True)
+    # hier Länderverknüpfung
     gesamtzahl_personen = models.IntegerField(blank=True, null=True)
     zurueckweisungen_personen = models.IntegerField(blank=True, null=True)
     zurueckschiebungen_personen = models.IntegerField(blank=True, null=True)
