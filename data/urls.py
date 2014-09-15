@@ -3,6 +3,7 @@ from rest_framework import routers
 from data import views
 
 router = routers.DefaultRouter()
+router.register(r'Country', views.CountryViewSet)
 router.register(r'AbschiebungBundeslaender', views.AbschiebungBundeslaenderViewSet)
 router.register(r'AbschiebungLandNationalitaet', views.AbschiebungLandNationalitaetViewSet)
 router.register(r'AbschiebungLandZielgebiet', views.AbschiebungLandZielgebietViewSet)

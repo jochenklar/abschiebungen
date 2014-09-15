@@ -2,6 +2,10 @@ from rest_framework import viewsets
 from data.models import *
 from data.serializers import *
 
+class CountryViewSet(viewsets.ReadOnlyModelViewSet):
+    queryset = Country.objects.all()
+    serializer_class = CountrySerializer
+
 class AbschiebungBundeslaenderViewSet(viewsets.ReadOnlyModelViewSet):
     queryset = AbschiebungBundeslaender.objects.all()
     serializer_class = AbschiebungBundeslaenderSerializer
