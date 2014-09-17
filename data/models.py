@@ -8,6 +8,12 @@ class Country(models.Model):
     shortcut_three      = models.CharField(max_length=256, blank=True)
     english_name        = models.CharField(max_length=256, blank=True)
     german_name         = models.CharField(max_length=256, blank=True)
+    capital             = models.CharField(max_length=256, blank=True)
+    lon                 = models.FloatField(blank=True, null=True)
+    lat                 = models.FloatField(blank=True, null=True)
+
+    def __unicode__(self):
+        return u'%s' % (self.english_name)
 
 class AbschiebungBundeslaender(models.Model):
     bundesland = models.CharField(max_length=256, blank=True)
