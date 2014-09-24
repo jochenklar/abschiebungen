@@ -1,7 +1,86 @@
 {% extends 'layout.html' %}
+{% load staticfiles %}
 
 {% block content %}
+<div id="map"></div>
 
-Hello!
+
+
+<style>
+
+.graticule {
+  fill: none;
+  stroke: #777;
+  stroke-opacity: .5;
+  stroke-width: .5px;
+}
+
+.land {
+  fill: #222;
+  stroke: #fff;
+}
+
+</style>
+<script src="http://d3js.org/d3.v3.min.js"></script>
+<script src="http://d3js.org/topojson.v1.min.js"></script>
+<script>
+
+var width = 960,
+    height = 960;
+
+var projection = d3.geo.mercator()
+    .scale((width + 1) / 2 / Math.PI)
+    .translate([width / 2, height / 2])
+    .precision(.1);
+
+var path = d3.geo.path()
+    .projection(projection);
+
+var graticule = d3.geo.graticule();
+
+var svg = d3.select("#map").append("svg")
+    .attr("width", width)
+    .attr("height", height);
+
+svg.append("path")
+    .datum(graticule)
+    .attr("class", "graticule")
+    .attr("d", path);
+
+
+
+
+d3.json("/static/countries.json", function(error, world) {      
+
+    d3.json("/api/ZurueckschiebungLuftwegNationalitaet/", function(error,items){
+        
+        var scale = d3.scale.linear().domain([0,_.max(_.filter(items, 'gesamtzahl_personen'),'gesamtzahl_personen').gesamtzahl_personen]).range([0,255])
+        debugger
+
+        _.each(items, function(item){
+            var country = item.staatsangehoerigkeit_country && _.find(world.features, {id: item.staatsangehoerigkeit_country.shortcut_three })
+            if (country) country.item = item;
+        })
+        svg.selectAll("path")
+        .data(world.features)
+        .enter().append("path")
+        .attr("class", "land")
+        .style('fill', function(d){
+            if(d.item){
+                console.log(scale(d.item.gesamtzahl_personen));
+                return 'rgb(' + parseInt(scale(d.item.gesamtzahl_personen))+',0,0)';
+            }
+        })
+        .attr("d", path);
+    });
+
+    
+});
+
+d3.select(self.frameElement).style("height", height + "px");
+
+</script>
+
+
 
 {% endblock %}
